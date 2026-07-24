@@ -1,0 +1,7 @@
+.photo-placeholder { background: var(--creme-clair); border: 1px solid var(--beige-bordure); overflow: hidden; position: relative; }
+.photo-placeholder::after { border: 1px solid rgba(255,255,255,.65); content: ''; inset: 13px; pointer-events: none; position: absolute; }
+.photo-placeholder__art { align-items: center; background: linear-gradient(135deg, #f4efe8 0%, #e6d9cb 100%); color: var(--gris-secondaire); display: flex; flex-direction: column; font-size: 9px; font-weight: 500; height: 100%; justify-content: center; letter-spacing: .24em; text-align: center; transition: transform .65s cubic-bezier(.25, 1, .5, 1); }
+.photo-placeholder:hover .photo-placeholder__art { transform: scale(1.06); }
+.photo-placeholder__line { background: var(--or-chaud); height: 1px; margin-bottom: 1rem; width: 42px; }
+.photo-placeholder__art i { border: 1px solid rgba(184,152,106,.38); border-radius: 50%; height: 80px; margin-top: 1rem; position: relative; width: 80px; }
+.photo-placeholder__art i::after { border: 1px solid rgba(184,152,106,.38); border-radius: 50%; content: ''; inset: 16px; position: absolute; }
