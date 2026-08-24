@@ -7,6 +7,7 @@ import Accueil from './pages/Accueil/Accueil'
 import APropos from './pages/APropos/APropos'
 import Prestations from './pages/Prestations/Prestations'
 import Contact from './pages/Contact/Contact'
+import Admin from './pages/Admin/Admin'
 import ScrollToTop from './components/ScrollToTop'
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/a-propos" element={<APropos />} />
         <Route path="/prestations" element={<Prestations />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </AnimatePresence>
     <Footer />
