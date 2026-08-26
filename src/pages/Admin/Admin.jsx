@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import PageTransition from '../../components/PageTransition/PageTransition'
+import Seo from '../../components/Seo/Seo'
 import './Admin.css'
 
 export default function Admin() {
@@ -50,7 +51,7 @@ export default function Admin() {
   }
 
   if (!password) {
-    return <PageTransition><section className="admin-page page-section">
+    return <PageTransition><Seo title="Administration" description="Espace privé de gestion des rendez-vous." path="/admin" noindex /><section className="admin-page page-section">
       <form className="admin-login" onSubmit={submitPassword}>
         <h1 className="section-heading">Espace administration</h1>
         <label><span>Mot de passe</span><input type="password" value={inputPassword} onChange={event => setInputPassword(event.target.value)} required autoFocus /></label>
@@ -60,7 +61,7 @@ export default function Admin() {
     </section></PageTransition>
   }
 
-  return <PageTransition><section className="admin-page page-section">
+  return <PageTransition><Seo title="Administration" description="Espace privé de gestion des rendez-vous." path="/admin" noindex /><section className="admin-page page-section">
     <h1 className="section-heading">Rendez-vous réservés</h1>
     {error && <p className="admin-error">{error}</p>}
     {error ? null : !bookings ? <p>Chargement…</p> : bookings.length === 0 ? <p>Aucun rendez-vous pour le moment.</p> : <ul className="admin-bookings">
