@@ -12,12 +12,17 @@ export default async function handler(req, res) {
   const today = new Date().toISOString().slice(0, 10)
   if (date < today) return res.status(400).json({ error: 'Date passée' })
 
-  const bookings = await readBookings()
-  if (bookings.some(booking => booking.date === date && booking.slot === slot)) {
-    return res.status(409).json({ error: 'Ce créneau vient d’être réservé, choisissez-en un autre.' })
-  }
+  try {
+    const bookings = await readBookings()
+    if (bookings.some(booking => booking.date === date && booking.slot === slot)) {
+      return res.status(409).json({ error: 'Ce créneau vient d’être réservé, choisissez-en un autre.' })
+    }
 
-  const booking = { id: randomUUID(), date, slot, name, email, phone: phone || '', createdAt: new Date().toISOString() }
-  await writeBookings([...bookings, booking])
-  res.status(201).json({ id: booking.id })
+    const booking = { id: randomUUID(), date, slot, name, email, phone: phone || '', createdAt: new Date().toISOString() }
+    await writeBookings([...bookings, booking])
+    res.status(201).json({ id: booking.id })
+  } catch (error) {
+    console.error('Réservation impossible :', error)
+    res.status(500).json({ error: 'Le service de réservation est indisponible.' })
+  }
 }
