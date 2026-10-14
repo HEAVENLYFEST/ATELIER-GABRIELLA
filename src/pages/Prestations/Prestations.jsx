@@ -8,7 +8,7 @@ import './Prestations.css'
 const formulas = [
   { title: 'Essentielle', price: '250€', items: ['Liste d\'achats et quantités recommandées', 'Planche d’inspiration sur-mesure', 'Conseils décoration et mise en scène'] },
   { title: 'Confort', price: 'à partir de 600€', items: ['Trois déplacements inclus', 'Visite technique du lieu', 'Mise en scène la veille ou le jour J', 'Coordination des détails décoratifs'] },
-  { title: 'Signature', price: 'à partir de 1200€', premium: true, items: ['Six déplacements inclus', 'Conception de tous les espaces', 'Scénographie complète et location', 'Présence et ajustements le jour J'] },
+  { title: 'Signature', price: 'à partir de 1200€', premium: true, items: ['Six déplacements inclus', 'Conception de tous les espaces', 'Scénographie complète', 'Présence et ajustements le jour J'] },
 ]
 
 export default function Prestations() {
