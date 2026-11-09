@@ -8,3 +8,4 @@
 .admin-bookings { display: flex; flex-direction: column; gap: .8rem; list-style: none; margin-top: 1.5rem; padding: 0; }
 .admin-bookings li { align-items: center; border: 1px solid var(--beige-bordure); display: flex; gap: 1rem; justify-content: space-between; padding: 1rem; }
 .admin-bookings p { color: var(--gris-secondaire); font-size: .85rem; margin-top: .3rem; }
+.admin-bookings .admin-message { color: var(--noir-charbon); white-space: pre-line; }

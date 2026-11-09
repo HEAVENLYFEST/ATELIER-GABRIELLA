@@ -69,6 +69,8 @@ export default function Admin() {
         <div>
           <strong>{booking.date} · {booking.slot}</strong>
           <p>{booking.name} — <a href={`mailto:${booking.email}`}>{booking.email}</a>{booking.phone && ` — ${booking.phone}`}</p>
+          {(booking.eventDate || booking.venue) && <p>Événement : {[booking.eventDate, booking.venue].filter(Boolean).join(' · ')}</p>}
+          {booking.message && <p className="admin-message">{booking.message}</p>}
         </div>
         <button type="button" onClick={() => cancelBooking(booking.id)}>Annuler</button>
       </li>)}
