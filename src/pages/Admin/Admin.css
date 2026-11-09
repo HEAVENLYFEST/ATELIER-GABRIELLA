@@ -9,3 +9,7 @@
 .admin-bookings li { align-items: center; border: 1px solid var(--beige-bordure); display: flex; gap: 1rem; justify-content: space-between; padding: 1rem; }
 .admin-bookings p { color: var(--gris-secondaire); font-size: .85rem; margin-top: .3rem; }
 .admin-bookings .admin-message { color: var(--noir-charbon); white-space: pre-line; }
+.admin-header { align-items: flex-start; display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; }
+.admin-header .section-heading { margin-bottom: 0; }
+.admin-logout { align-items: center; background: transparent; border: 1px solid var(--beige-bordure); color: var(--noir-charbon); display: inline-flex; font-size: .8rem; gap: .5rem; padding: .55rem 1rem; transition: var(--transition-smooth); }
+.admin-logout:hover { border-color: var(--or-chaud); color: var(--or-chaud); }

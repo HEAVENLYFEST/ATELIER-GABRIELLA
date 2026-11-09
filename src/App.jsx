@@ -8,6 +8,8 @@ import APropos from './pages/APropos/APropos'
 import Prestations from './pages/Prestations/Prestations'
 import Contact from './pages/Contact/Contact'
 import Admin from './pages/Admin/Admin'
+import NotFound from './pages/NotFound/NotFound'
+import AdminSessionPrompt from './components/AdminSessionPrompt/AdminSessionPrompt'
 import ScrollToTop from './components/ScrollToTop'
 
 export default function App() {
@@ -23,9 +25,11 @@ export default function App() {
         <Route path="/prestations" element={<Prestations />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
     <Footer />
     <CookieConsent />
+    <AdminSessionPrompt />
   </>
 }

@@ -1,0 +1,11 @@
+.admin-prompt { align-items: center; background: rgba(26, 26, 26, .45); display: flex; inset: 0; justify-content: center; padding: 16px; position: fixed; z-index: 1000; }
+.admin-prompt__card { background: var(--blanc); border-top: 2px solid var(--or-chaud); max-width: 440px; padding: 2.2rem 2rem 1.8rem; width: 100%; }
+.admin-prompt__card h2 { font-family: var(--font-titres); font-size: 2rem; font-weight: 400; line-height: 1.1; margin: .6rem 0 .8rem; }
+.admin-prompt__text { color: #626262; font-size: .85rem; line-height: 1.7; }
+.admin-prompt__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.6rem; }
+.admin-prompt__actions button { flex: 1 1 160px; font-size: .8rem; letter-spacing: .04em; padding: .75rem 1rem; transition: var(--transition-smooth); }
+.admin-prompt__primary { background: var(--or-chaud); border: 1px solid var(--or-chaud); color: var(--blanc); }
+.admin-prompt__primary:hover { opacity: .85; }
+.admin-prompt__secondary { background: transparent; border: 1px solid var(--beige-bordure); color: var(--noir-charbon); }
+.admin-prompt__secondary:hover { border-color: var(--or-chaud); color: var(--or-chaud); }
+.admin-prompt__back { color: var(--or-chaud); display: inline-block; font-size: .75rem; margin-top: 1.1rem; text-decoration: underline; text-underline-offset: 3px; }

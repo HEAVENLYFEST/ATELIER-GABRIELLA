@@ -1,10 +1,13 @@
+import { LogOut } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import PageTransition from '../../components/PageTransition/PageTransition'
 import Seo from '../../components/Seo/Seo'
+import { seoPages } from '../../seo'
+import { clearAdminPassword, getAdminPassword, setAdminPassword } from '../../adminSession'
 import './Admin.css'
 
 export default function Admin() {
-  const [password, setPassword] = useState(() => sessionStorage.getItem('admin-password') || '')
+  const [password, setPassword] = useState(getAdminPassword)
   const [inputPassword, setInputPassword] = useState('')
   const [bookings, setBookings] = useState(null)
   const [error, setError] = useState('')
@@ -14,7 +17,7 @@ export default function Admin() {
     try {
       const response = await fetch('/api/admin/bookings', { headers: { 'x-admin-password': pwd } })
       if (response.status === 401) {
-        sessionStorage.removeItem('admin-password')
+        clearAdminPassword()
         setPassword('')
         setError('Mot de passe incorrect.')
         return
@@ -35,8 +38,16 @@ export default function Admin() {
 
   const submitPassword = event => {
     event.preventDefault()
-    sessionStorage.setItem('admin-password', inputPassword)
+    setAdminPassword(inputPassword)
     setPassword(inputPassword)
+  }
+
+  const logout = () => {
+    clearAdminPassword()
+    setPassword('')
+    setInputPassword('')
+    setBookings(null)
+    setError('')
   }
 
   const cancelBooking = async id => {
@@ -51,7 +62,7 @@ export default function Admin() {
   }
 
   if (!password) {
-    return <PageTransition><Seo title="Administration" description="Espace privé de gestion des rendez-vous." path="/admin" noindex /><section className="admin-page page-section">
+    return <PageTransition><Seo {...seoPages.admin} /><section className="admin-page page-section">
       <form className="admin-login" onSubmit={submitPassword}>
         <h1 className="section-heading">Espace administration</h1>
         <label><span>Mot de passe</span><input type="password" value={inputPassword} onChange={event => setInputPassword(event.target.value)} required autoFocus /></label>
@@ -61,8 +72,11 @@ export default function Admin() {
     </section></PageTransition>
   }
 
-  return <PageTransition><Seo title="Administration" description="Espace privé de gestion des rendez-vous." path="/admin" noindex /><section className="admin-page page-section">
-    <h1 className="section-heading">Rendez-vous réservés</h1>
+  return <PageTransition><Seo {...seoPages.admin} /><section className="admin-page page-section">
+    <div className="admin-header">
+      <h1 className="section-heading">Rendez-vous réservés</h1>
+      <button type="button" className="admin-logout" onClick={logout}><LogOut size={14} /> Se déconnecter</button>
+    </div>
     {error && <p className="admin-error">{error}</p>}
     {error ? null : !bookings ? <p>Chargement…</p> : bookings.length === 0 ? <p>Aucun rendez-vous pour le moment.</p> : <ul className="admin-bookings">
       {bookings.map(booking => <li key={booking.id}>

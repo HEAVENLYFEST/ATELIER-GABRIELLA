@@ -3,6 +3,7 @@ import { Check, Instagram } from 'lucide-react'
 import Button from '../../components/Button/Button'
 import PageTransition from '../../components/PageTransition/PageTransition'
 import Seo from '../../components/Seo/Seo'
+import { seoPages } from '../../seo'
 import './Prestations.css'
 
 const formulas = [
@@ -12,7 +13,7 @@ const formulas = [
 ]
 
 export default function Prestations() {
-  return <PageTransition><Seo title="Prestations" description="Trois formules de décoration et scénographie d'événements sur-mesure : Essentielle, Confort et Signature. Découvrez les prestations de l'Atelier Gabriella." path="/prestations" /><div className="prestations-layout">
+  return <PageTransition><Seo {...seoPages.prestations} /><div className="prestations-layout">
     <section className="prestations-content">
       <motion.header className="services-intro" initial={{ opacity: 0, y: 25 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }}>
         <p className="eyebrow">Des formules à votre mesure</p><h1 className="section-heading">Prestations</h1>

@@ -1,7 +1,5 @@
 import { useEffect } from 'react'
-
-const SITE_URL = 'https://ateliergabrielladesigner.com'
-const DEFAULT_IMAGE = `${SITE_URL}/logo-navbar.png`
+import { DEFAULT_IMAGE, SITE_URL, fullTitle } from '../../seo'
 
 function setMetaTag(attribute, key, content) {
   let element = document.head.querySelector(`meta[${attribute}="${key}"]`)
@@ -25,15 +23,15 @@ function setCanonicalLink(href) {
 
 export default function Seo({ title, description, path = '', image = DEFAULT_IMAGE, noindex = false }) {
   useEffect(() => {
-    const fullTitle = `${title} | Atelier Gabriella`
+    const pageTitle = fullTitle(title)
     const url = `${SITE_URL}${path}`
 
-    document.title = fullTitle
+    document.title = pageTitle
     setMetaTag('name', 'description', description)
     setMetaTag('name', 'robots', noindex ? 'noindex, nofollow' : 'index, follow')
     setCanonicalLink(url)
 
-    setMetaTag('property', 'og:title', fullTitle)
+    setMetaTag('property', 'og:title', pageTitle)
     setMetaTag('property', 'og:description', description)
     setMetaTag('property', 'og:url', url)
     setMetaTag('property', 'og:image', image)
@@ -41,7 +39,7 @@ export default function Seo({ title, description, path = '', image = DEFAULT_IMA
     setMetaTag('property', 'og:locale', 'fr_FR')
 
     setMetaTag('name', 'twitter:card', 'summary_large_image')
-    setMetaTag('name', 'twitter:title', fullTitle)
+    setMetaTag('name', 'twitter:title', pageTitle)
     setMetaTag('name', 'twitter:description', description)
     setMetaTag('name', 'twitter:image', image)
   }, [title, description, path, image, noindex])
